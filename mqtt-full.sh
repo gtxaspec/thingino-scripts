@@ -3,7 +3,7 @@
 # MQTT Broker settings
 BROKER="193.169.2.1"
 PORT=1883
-USERNAME="openipc"
+USERNAME="thingino"
 PASSWORD="brokerpass"
 SUB_TOPIC="camera/$1/#"
 MOTOR_BINARY="ingenic-motor"

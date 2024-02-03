@@ -1,0 +1,302 @@
+views:
+  - title: example Camera
+    subview: true
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:webrtc-camera
+            poster: https://home-assistant.io/images/cast/splash.png
+            background: false
+            ui: true
+            muted: true
+            style: >-
+              .screenshot {display: true} .pictureinpicture {display: none}
+              .fullscreen {display: block; position: absolute; top: 0%; right:
+              -200px}  .mode {display: true}
+            streams:
+              - url: example_1080p_rtsp
+                name: HD
+                mode: webrtc
+              - url: example_360p_rtsp
+                name: SD
+                mode: webrtc
+          - type: horizontal-stack
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    retain: false
+                    topic: camera/example/ptz
+                    payload: ptz-preset:900:750:275
+                name: Window
+                icon: mdi:eye-outline
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    retain: false
+                    topic: camera/example/ptz
+                    payload: ptz-preset:900:1550:475
+                icon: mdi:eye-outline
+                name: TV
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    retain: false
+                    payload: ptz-preset:900:2540:500
+                    topic: camera/example/ptz
+                icon: mdi:eye-outline
+                name: Tree
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    retain: false
+                    payload: ptz-preset:900:2540:0
+                    topic: camera/example/ptz
+                icon: mdi:eye-outline
+                name: Tree 2
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    retain: false
+                    topic: camera/example/ptz
+                    payload: ptz-preset:900:1470:0
+                icon: mdi:eye-outline
+                name: Play Area
+          - square: false
+            type: grid
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    topic: camera/example/night
+                    payload: daynight-toggle
+                icon: mdi:weather-night
+                name: Night
+                icon_height: 44px
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    retain: false
+                    topic: camera/example/ptz
+                    payload: ptz-reset
+                name: Reset Position
+                icon: mdi:camera
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    retain: false
+                    topic: camera/example/ptz
+                    payload: ptz-topleft:900:-200:100
+                icon: mdi:arrow-top-left-bold-outline
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    retain: false
+                    topic: camera/example/ptz
+                    payload: ptz-topleft:900:0:200
+                icon: mdi:arrow-up-bold-outline
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    retain: false
+                    topic: camera/example/ptz
+                    payload: ptz-topright:900:200:100
+                icon: mdi:arrow-top-right-bold-outline
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    retain: false
+                name: Mute
+                icon: mdi:volume-off
+                icon_height: 44px
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    retain: false
+                icon: mdi:restart
+                name: Restart
+                icon_height: 44px
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    topic: camera/example/ptz
+                    payload: ptz-left:900:-200
+                icon: mdi:arrow-left-bold-outline
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    retain: false
+                    topic: camera/example/ptz
+                    payload: ptz-center:900
+                entity: switch.exterior_notifications
+                icon: mdi:image-filter-center-focus-strong
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    retain: false
+                    topic: camera/example/ptz
+                    payload: ptz-left:900:200
+                icon: mdi:arrow-right-bold-outline
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    retain: false
+                name: Screenshot
+                icon_height: 44px
+                icon: mdi:camera
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    retain: false
+                icon_height: NaNpx
+                name: Siren
+                icon: mdi:alarm-light
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    retain: false
+                    topic: camera/example/ptz
+                    payload: ptz-bottomleft:900:-200:-100
+                entity: switch.exterior_notifications
+                icon: mdi:arrow-bottom-left-bold-outline
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    retain: false
+                    topic: camera/example/ptz
+                    payload: ptz-down:900:0:-200
+                icon: mdi:arrow-down-bold-outline
+                icon_height: 44px
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  target: {}
+                  data:
+                    qos: 0
+                    retain: false
+                    topic: camera/example/ptz
+                    payload: ptz-bottomright:900:200:-100
+                entity: switch.exterior_notifications
+                icon: mdi:arrow-bottom-right-bold-outline
+            columns: 5
+          - type: custom:audio-recorder-card
+            websocket_address: 192.168.1.50
+            websocket_endpoint: /audio_example

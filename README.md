@@ -1,1 +1,1 @@
-various scrpits to enhance life within openipc
+various scrpits to enhance life within the thingino environment
