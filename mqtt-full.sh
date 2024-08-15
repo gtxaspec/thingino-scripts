@@ -6,7 +6,7 @@ PORT=1883
 USERNAME="thingino"
 PASSWORD="brokerpass"
 SUB_TOPIC="camera/$1/#"
-MOTOR_BINARY="ingenic-motor"
+MOTOR_BINARY="motors"
 MQTT_BINARY="mosquitto_sub"
 
 process_command() {
@@ -19,71 +19,71 @@ process_command() {
             case "$command" in
                 "night-on")
                     echo "Switching to night mode"
-                    /usr/sbin/ircut.sh on
+                    /usr/sbin/ircut on
                     ;;
                 "night-off")
                     echo "Switching to day mode"
-                    /usr/sbin/ircut.sh off
+                    /usr/sbin/ircut off
                     ;;
                 "night-toggle")
                     echo "Toggling night/day mode"
-                    /usr/sbin/ircut.sh toggle
+                    /usr/sbin/ircut toggle
                     ;;
                 "ir850-on")
                     echo "IR1 on"
-                    /usr/sbin/irled.sh on ir850
+                    /usr/sbin/irled on ir850
                     ;;
                 "ir850-off")
                     echo "IR1 off"
-                    /usr/sbin/irled.sh off ir850
+                    /usr/sbin/irled off ir850
                     ;;
                 "ir850-toggle")
                     echo "IR1 off"
-                    /usr/sbin/irled.sh toggle ir850
+                    /usr/sbin/irled toggle ir850
                     ;;
                 "ir940-on")
                     echo "IR1 on"
-                    /usr/sbin/irled.sh on ir940
+                    /usr/sbin/irled on ir940
                     ;;
                 "ir940-off")
                     echo "IR1 off"
-                    /usr/sbin/irled.sh off ir940
+                    /usr/sbin/irled off ir940
                     ;;
                 "ir940-toggle")
                     echo "IR1 off"
-                    /usr/sbin/irled.sh toggle ir940
+                    /usr/sbin/irled toggle ir940
                     ;;
                 "irwhite-on")
                     echo "IR1 on"
-                    /usr/sbin/irled.sh on white
+                    /usr/sbin/irled on white
                     ;;
                 "irwhite-off")
                     echo "IR1 off"
-                    /usr/sbin/irled.sh off white
+                    /usr/sbin/irled off white
                     ;;
                 "irwhite-toggle")
                     echo "IR1 off"
-                    /usr/sbin/irled.sh toggle white
+                    /usr/sbin/irled toggle white
                     ;;
                 "color-on")
                     echo "IR1 on"
-                    /usr/sbin/color.sh on
+                    /usr/sbin/color on
                     ;;
                 "color-off")
                     echo "IR1 off"
-                    /usr/sbin/color.sh off
+                    /usr/sbin/color off
                     ;;
                 "daynight-day")
                     echo "day"
-                    /usr/sbin/daynight.sh day
+                    /usr/sbin/daynight day
                     ;;
                 "daynight-night")
                     echo "night"
-                    /usr/sbin/daynight.sh night
+                    /usr/sbin/daynight night
                     ;;
                 "daynight-toggle")
                     echo "daynight toggle"
-                    /usr/sbin/daynight.sh toggle
+                    /usr/sbin/daynight toggle
                     ;;
                 *)
                     echo "Unknown night command: $command"
