@@ -74,6 +74,7 @@ process_ptz_command() {
 	stepy=$(echo "$1" | cut -d':' -f4)
 
 	case "$direction" in
+		"ptz-preset") preset_num=$(echo "$1" | cut -d':' -f2) && [ -n "$preset_num" ] && echo "Moving to PTZ preset $preset_num" && $PTZ_PRESET_CMD "$preset_num" ;;
 		"ptz-topleft") echo "Moving top-left"; $MOTOR_BINARY -s "$speed" -d g -x "$stepx" -y "$stepy" ;;
 		"ptz-left") echo "Moving left"; $MOTOR_BINARY -s "$speed" -d g -x "$stepx" ;;
 		"ptz-bottomleft") echo "Moving bottom-left"; $MOTOR_BINARY -s "$speed" -d g -x "$stepx" -y "$stepy" ;;
@@ -83,7 +84,6 @@ process_ptz_command() {
 		"ptz-up") echo "Moving up"; $MOTOR_BINARY -s "$speed" -d g -y "$stepy" ;;
 		"ptz-down") echo "Moving down"; $MOTOR_BINARY -s "$speed" -d g -y "$stepy" ;;
 		"ptz-home") echo "Moving to home"; $MOTOR_BINARY -s "$speed" -d b ;;
-		"ptz-preset") echo "Moving to preset"; $MOTOR_BINARY -s "$speed" -d h -x "$stepx" -y "$stepy" ;;
 		"ptz-reset") echo "Resetting PTZ"; $MOTOR_BINARY -r ;;
 		*) echo "Unknown PTZ command: $direction" ;;
 	esac
